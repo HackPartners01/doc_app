@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'Constants.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -11,9 +13,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        appBar: AppBar(title: Text('DocApp')),
-      ),);
-
+        appBar: AppBar(
+          title: Text('DocApp'),
+          backgroundColor: orange,
+        ),
+      ),
+    );
   }
 }
-
