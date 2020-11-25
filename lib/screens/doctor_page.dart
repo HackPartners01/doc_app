@@ -1,3 +1,4 @@
+import 'package:doc_app/Components/map_live_location.dart';
 import 'package:doc_app/Components/text_card.dart';
 import 'package:doc_app/Constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -93,9 +94,7 @@ class DoctorPage extends StatelessWidget{
                 color: kColorLightGrey,
                 borderRadius: BorderRadius.all(Radius.circular(10))
               ),
-              child: Center(
-                child: Icon(Icons.map),
-              ),
+              child: MapLiveLocation(),
             ),
           ),
         )
