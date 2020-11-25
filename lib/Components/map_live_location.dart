@@ -14,70 +14,41 @@ class MapLiveLocation extends StatefulWidget {
 }
 
 class MapLiveLocationState extends State<MapLiveLocation> {
-  Completer<GoogleMapController> _controller = Completer();
-  static const LatLng _center = const LatLng(45.521, -122.677);
-  final Set<Marker> markers = {};
-  MapType _currentMapType = MapType.normal;
-  LatLng _lastMapPosition = _center;
+  LatLng ourLocation = LatLng(29.318692, 76.307506);
+  LatLng docLocation = LatLng(29.291125, 76.338386);
+  GoogleMapController _controller;
   final Set<Polyline> polyLine = {};
   List<LatLng> routeCoords;
-  LatLng ourLocation = LatLng(27.2046, 77.4977);
-  LatLng docLocation = LatLng(24.4628, 82.9930);
-
-  getSomePoints() async {
-
-      routeCoords = await googleMapPolyline.getCoordinatesWithLocation(
-          origin: docLocation,
-          destination: ourLocation,
-          mode: RouteMode.driving);
-    }
-  }
-
-  void initState() {
-    super.initState();
-    getSomePoints();
-
-    polyLine.add(Polyline(
-      polylineId: PolylineId('route1'),
-      visible: true,
-      points: routeCoords,
-      width: 4,
-      color: kColorOrange,
-      startCap: Cap.roundCap,
-      endCap: Cap.buttCap,
-    ));
-  }
-
   GoogleMapPolyline googleMapPolyline =
       new GoogleMapPolyline(apiKey: 'AIzaSyA-wTfmpUdurLBGrJBjOgrAgm1N5cpUcXI');
 
-  _onMapCreated(GoogleMapController controller) {
-    _controller.complete(controller);
+  initState() {
+    super.initState();
+    getSomePoints();
   }
 
-  _onCameraMove(CameraPosition position) {
-    _lastMapPosition = position.target;
+  getSomePoints() async {
+    routeCoords = await googleMapPolyline.getCoordinatesWithLocation(
+        origin: docLocation, destination: ourLocation, mode: RouteMode.driving);
+
+    print('$routeCoords and helooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo');
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: Scaffold(
-          body: Stack(
-            children: [
-              GoogleMap(
-                onMapCreated: _onMapCreated,
-                initialCameraPosition:
-                CameraPosition(target: _center, zoom: 11),
-                mapType: _currentMapType,
-                markers: markers,
-                polylines: polyLine,
-                onCameraMove: _onCameraMove,
-              ),
-            ],
-          ),
-        )
+    return Scaffold(
+      body: GoogleMap(
+        onMapCreated: onMapCreated,
+        polylines: polyLine,
+        initialCameraPosition: CameraPosition(target: ourLocation, zoom: 14),
+      ),
     );
+  }
+
+  onMapCreated(GoogleMapController googleMapController) {
+    setState(() {
+      _controller = googleMapController;
+      polyLine.add(Polyline(polylineId: PolylineId('route1'), visible: true,width: 4, color: kColorOrange, points: routeCoords, startCap: Cap.roundCap, endCap: Cap.buttCap));
+    });
   }
 }
