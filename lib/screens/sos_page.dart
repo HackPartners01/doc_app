@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:doc_app/constants.dart';
 
 class SOSPage extends StatelessWidget {
+
+  int numDoctorsNearby = 6;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +47,7 @@ class SOSPage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text('6',
+                        Text('$numDoctorsNearby',
                             style: TextStyle(
                                 fontSize: 50.0, fontWeight: FontWeight.bold)),
                         Text('Doctors Found Nearby'),
@@ -72,7 +75,7 @@ class SOSPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text('6',
+                  Text('$numDoctorsNearby',
                       style: TextStyle(
                           fontSize: 50.0, fontWeight: FontWeight.bold)),
                   Text('Doctors Found Nearby'),
