@@ -1,8 +1,8 @@
+import 'package:doc_app/Components/map_live_location.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
-
 import 'package:doc_app/components/text_card.dart';
 import 'package:doc_app/constants.dart';
 
@@ -111,7 +111,7 @@ class DoctorPage extends StatelessWidget {
                   color: kColorLightGrey,
                   borderRadius: BorderRadius.all(Radius.circular(10))),
               child: Center(
-                child: Icon(Icons.map),
+                child: MapLiveLocation()
               ),
             ),
           ),
