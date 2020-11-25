@@ -5,6 +5,7 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 import 'package:doc_app/screens/sos_page.dart';
 import 'package:doc_app/screens/doctor_page.dart';
+import 'package:doc_app/screens/doctor_form.dart';
 import 'package:doc_app/constants.dart';
 
 class Body extends StatelessWidget {
@@ -15,7 +16,7 @@ class Body extends StatelessWidget {
     return [
       SOSPage(),
       DoctorPage(),
-      Container(child: Icon(Icons.emoji_emotions)),
+      DoctorForm(),
     ];
   }
 

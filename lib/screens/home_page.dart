@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       drawer: SideNavDrawer(),
       appBar: AppBar(
         title: Text('DocApp'),
