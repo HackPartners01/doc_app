@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+enum WhyFarther { harder, smarter, selfStarter, tradingCharter }
+enum Commands { heroAndScholar, hurricaneCame }
+
 class DoctorForm extends StatelessWidget {
   // static Seller seller;
   //
@@ -27,7 +30,9 @@ class DoctorFormElementsState extends State<DoctorFormElements> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    // final _product = Product();
+    String dropdownValue = 'Choose Category';
+    var _selection;
+    bool _heroAndScholar;
 
     return Form(
       key: _formKey,
@@ -98,6 +103,33 @@ class DoctorFormElementsState extends State<DoctorFormElements> {
                     labelText: 'Types of Emergency You can Handle',
                     // prefixIcon: Icon(Icons.drive_file_rename_outline),
                     border: OutlineInputBorder(),
+                    suffix: PopupMenuButton<WhyFarther>(
+                      icon: Icon(Icons.arrow_drop_down),
+                      onSelected: (WhyFarther result) {
+                        setState(() {
+                          _selection = result;
+                        });
+                      },
+                      itemBuilder: (BuildContext context) =>
+                          <PopupMenuEntry<WhyFarther>>[
+                        const PopupMenuItem<WhyFarther>(
+                          value: WhyFarther.harder,
+                          child: Text('Working a lot harder'),
+                        ),
+                        const PopupMenuItem<WhyFarther>(
+                          value: WhyFarther.smarter,
+                          child: Text('Being a lot smarter'),
+                        ),
+                        const PopupMenuItem<WhyFarther>(
+                          value: WhyFarther.selfStarter,
+                          child: Text('Being a self-starter'),
+                        ),
+                        const PopupMenuItem<WhyFarther>(
+                          value: WhyFarther.tradingCharter,
+                          child: Text('Placed in charge of trading charter'),
+                        ),
+                      ],
+                    ),
                   ),
                   validator: (name) {
                     if (name.isEmpty) return 'Required Field';
@@ -124,6 +156,35 @@ class DoctorFormElementsState extends State<DoctorFormElements> {
                   // onSaved: (val) => _product.name = val //TODO
                 ),
               ),
+            ),
+            PopupMenuButton<Commands>(
+              onSelected: (Commands result) {
+                switch (result) {
+                  case Commands.heroAndScholar:
+                    setState(() {
+                      _heroAndScholar = !_heroAndScholar;
+                    });
+                    break;
+                  case Commands.hurricaneCame:
+                    // ...handle hurricane option
+                    break;
+                  // ...other items handled here
+                }
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry<Commands>>[
+                CheckedPopupMenuItem<Commands>(
+                  checked: _heroAndScholar,
+                  value: Commands.heroAndScholar,
+                  child: const Text('Hero and scholar'),
+                ),
+                const PopupMenuDivider(),
+                const PopupMenuItem<Commands>(
+                  value: Commands.hurricaneCame,
+                  child: ListTile(
+                      leading: Icon(null), title: Text('Bring hurricane')),
+                ),
+                // ...other items listed here
+              ],
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),

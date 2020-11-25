@@ -90,7 +90,7 @@ class SOSPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text('500 \$',
+                  Text('500 INR',
                       style: TextStyle(
                           fontSize: 50.0, fontWeight: FontWeight.bold)),
                   Text('Assistance Fee'),
