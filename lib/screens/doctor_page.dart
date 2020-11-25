@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 class DoctorPage extends StatelessWidget{
 
   String avatarImageLocation = 'assets/images/avatar.png';
+  int timeToReach = 10;
+  String docPhoneNum = "98xxxxxxxx";
 
 
   @override
@@ -52,7 +54,7 @@ class DoctorPage extends StatelessWidget{
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(4.0),
-                                child: Text('998xxxxxxx'),
+                                child: Text('$docPhoneNum'),
                               )
                             ],
                           ),
@@ -61,7 +63,7 @@ class DoctorPage extends StatelessWidget{
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('Available in 10 minutes', style: TextStyle(fontSize: 20),),
+                      child: Text('Available in $timeToReach minutes', style: TextStyle(fontSize: 20),),
                     ),
                   ],
                 ),
@@ -77,7 +79,7 @@ class DoctorPage extends StatelessWidget{
               children: [
                 Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: Text('Alerted nearby hospitals for ambulance assistance.', style: TextStyle(fontSize: 20),),
+                  child: Text('Alerted nearby hospitals for ambulance assistance.', style: TextStyle(fontSize: 20), textAlign: TextAlign.center,),
                 ),
                 Padding(
                   padding: const EdgeInsets.all(16.0),
