@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../Constants.dart';
+import 'package:doc_app/constants.dart';
 
-class SideNavDrawer extends StatelessWidget{
+class SideNavDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -15,11 +15,11 @@ class SideNavDrawer extends StatelessWidget{
               alignment: Alignment.bottomLeft,
               child: Text(
                 'Username',
-                style: TextStyle(color: white, fontSize: 25),
+                style: TextStyle(color: kColorWhite, fontSize: 25),
               ),
             ),
             decoration: BoxDecoration(
-                color: lightGrey,
+                color: kColorLightGrey,
                 image: DecorationImage(
                     fit: BoxFit.fill,
                     image: AssetImage('assets/images/cover.png'))),

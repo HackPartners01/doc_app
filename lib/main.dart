@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'Components/side_nav_drawer.dart';
-import 'Constants.dart';
-
+import 'screens/home_page.dart';
+import 'constants.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,17 +15,10 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Comfortaa',
-        primaryColor: darkGrey,
-        accentColor: orange,
-
+        primaryColor: kColorDarkGrey,
+        accentColor: kColorOrange,
       ),
-      home: Scaffold(
-        drawer: SideNavDrawer(),
-        appBar: AppBar(
-          title: Text('DocApp'),
-        ),
-
-      ),
+      home: HomePage(),
     );
   }
 }
