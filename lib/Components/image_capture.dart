@@ -1,30 +1,28 @@
-mport 'dart:io';
-
-import 'package:firebase_core/firebase_core.dart';
+import 'dart:io';
+import 'package:doc_app/Components/uploader.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:main_app/components/uploader.dart';
-import 'package:main_app/data_models/product.dart';
+import 'package:doc_app/Data Modlels/doctor.dart';
 
 class ImageCaptureWidget extends StatefulWidget {
-  Product p;
-  ImageCaptureWidget(Product p) {
-    this.p = p;
+  Doctor d;
+  ImageCaptureWidget(Doctor d) {
+    this.d = d;
   }
 
   @override
   State<StatefulWidget> createState() {
-    return ImageCaptureState(p);
+    return ImageCaptureState(d);
   }
 }
 
 class ImageCaptureState extends State<ImageCaptureWidget> {
   //active image file
-  Product p;
-  ImageCaptureState(Product p) {
-    this.p = p;
+  Doctor d;
+  ImageCaptureState(Doctor d) {
+    this.d = d;
   }
   static File imageFile;
 
@@ -69,7 +67,7 @@ class ImageCaptureState extends State<ImageCaptureWidget> {
                       child: Container(
                           width: 250.0,
                           child: Text(
-                            'Please submit one image of the product',
+                            'Please upload a profile piture so that patients can recognize you at the time of emergency',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 15,
@@ -77,39 +75,42 @@ class ImageCaptureState extends State<ImageCaptureWidget> {
                           )),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Container(
-                        height: 40,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20),
-                                bottomLeft: Radius.circular(20)),
-                            color: Colors.black12),
-                        child: IconButton(
-                          icon: Icon(Icons.camera),
-                          onPressed: () {
-                            _pickImage(ImageSource.camera);
-                          },
+                  Padding(
+                    padding: const EdgeInsets.only(left:8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20),
+                                  bottomLeft: Radius.circular(20)),
+                              color: Colors.black12),
+                          child: IconButton(
+                            icon: Icon(Icons.camera),
+                            onPressed: () {
+                              _pickImage(ImageSource.camera);
+                            },
+                          ),
                         ),
-                      ),
-                      Container(
-                        height: 40,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(20),
-                                bottomRight: Radius.circular(20)),
-                            color: Colors.black12),
-                        child: IconButton(
-                          icon: Icon(Icons.photo_library_outlined),
-                          onPressed: () {
-                            _pickImage(ImageSource.gallery);
-                          },
-                        ),
-                      )
-                    ],
+                        Container(
+                          height: 40,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(20),
+                                  bottomRight: Radius.circular(20)),
+                              color: Colors.black12),
+                          child: IconButton(
+                            icon: Icon(Icons.photo_library_outlined),
+                            onPressed: () {
+                              _pickImage(ImageSource.gallery);
+                            },
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),
@@ -130,7 +131,7 @@ class ImageCaptureState extends State<ImageCaptureWidget> {
                       )
                     ],
                   ),
-                  Uploader(file: imageFile, p: p)
+                  Uploader(file: imageFile, d: d)
                 ]
               ],
             ),
