@@ -5,6 +5,7 @@ import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 import 'package:doc_app/screens/sos_page.dart';
 import 'package:doc_app/screens/doctor_page.dart';
+import 'package:doc_app/constants.dart';
 
 class Body extends StatelessWidget {
   final PersistentTabController _controller =
@@ -49,7 +50,7 @@ class Body extends StatelessWidget {
       items: _navBarsItems(),
 
       confineInSafeArea: true,
-      backgroundColor: Colors.white,
+      backgroundColor: kColorLightGrey,
       handleAndroidBackButtonPress: true,
       resizeToAvoidBottomInset:
           true, // This needs to be true if you want to move up the screen when keyboard appears.

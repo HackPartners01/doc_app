@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
 import 'package:doc_app/constants.dart';
+import 'package:doc_app/components/text_card.dart';
 
 class SOSPage extends StatelessWidget {
-
-  int numDoctorsNearby = 6;
-
   @override
   Widget build(BuildContext context) {
+    int numDoctorsNearby = 6;
+
     return Container(
-      color: kColorLightGrey,
+      color: Colors.white,
       padding: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 20.0),
       child: Column(
         children: [
@@ -18,39 +18,29 @@ class SOSPage extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(5.0),
+                  child: TextCard(
                     margin: EdgeInsets.fromLTRB(0, 0, 5.0, 5.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text('6',
+                        Text('$numDoctorsNearby',
                             style: TextStyle(
-                                fontSize: 50.0, fontWeight: FontWeight.bold)),
+                                fontSize: 90.0, fontWeight: FontWeight.bold)),
                         Text('Doctors Found Nearby'),
                       ],
                     ),
                   ),
                 ),
                 Expanded(
-                  child: Container(
-                    padding: EdgeInsets.all(5.0),
+                  child: TextCard(
                     margin: EdgeInsets.fromLTRB(5.0, 0, 0, 5.0),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text('$numDoctorsNearby',
+                        Text('2',
                             style: TextStyle(
-                                fontSize: 50.0, fontWeight: FontWeight.bold)),
-                        Text('Doctors Found Nearby'),
+                                fontSize: 90.0, fontWeight: FontWeight.bold)),
+                        Text('Hospitals Found Nearby'),
                       ],
                     ),
                   ),
@@ -60,25 +50,50 @@ class SOSPage extends StatelessWidget {
           ),
           Expanded(
             flex: 5,
-            child: name(),
+            child: TextCard(
+              margin: EdgeInsets.symmetric(vertical: 5.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  CategoryDropdown(),
+                  Container(
+                    height: 100.0,
+                    alignment: Alignment.center,
+                    padding:
+                        EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
+                    decoration: BoxDecoration(
+                      color: kColorOrange,
+                      borderRadius: BorderRadius.circular(100.0),
+                    ),
+                    child: Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        child: Text(
+                          'Request Assistance',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 38.0),
+                        ),
+                        onTap:
+                            () {}, // TODO : Add function to request assistance
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
           Expanded(
             flex: 2,
-            child: Container(
-              constraints: BoxConstraints.expand(),
-              padding: EdgeInsets.all(5.0),
+            child: TextCard(
               margin: EdgeInsets.fromLTRB(0, 5.0, 0, 0),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10.0),
-              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Text('$numDoctorsNearby',
+                  Text('500 \$',
                       style: TextStyle(
                           fontSize: 50.0, fontWeight: FontWeight.bold)),
-                  Text('Doctors Found Nearby'),
+                  Text('Assistance Fee'),
                 ],
               ),
             ),
@@ -89,23 +104,41 @@ class SOSPage extends StatelessWidget {
   }
 }
 
-class name extends StatelessWidget {
-  const name({
-    Key key,
-  }) : super(key: key);
+class CategoryDropdown extends StatefulWidget {
+  @override
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
+}
+
+/// This is the private State class that goes with MyStatefulWidget.
+class _MyStatefulWidgetState extends State<CategoryDropdown> {
+  static String dropdownValue = 'Choose Category';
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      constraints: BoxConstraints.expand(),
-      padding: EdgeInsets.all(5.0),
-      margin: EdgeInsets.symmetric(vertical: 5.0),
-      alignment: Alignment.center,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.circle,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: DropdownButton<String>(
+        value: dropdownValue,
+        elevation: 16,
+        onChanged: (String newValue) {
+          setState(() {
+            dropdownValue = newValue;
+          });
+        },
+        items: <String>[
+          'Choose Category',
+          'Cardiac Arrest',
+          'Trauma/Injury',
+          'Pregnancy Related',
+          'Breathing Issue',
+          'Intoxication',
+        ].map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
       ),
-      child: Expanded(child: Container(child: Text('Request Assistance'))),
     );
   }
 }
