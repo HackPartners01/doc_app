@@ -1,31 +1,40 @@
-import 'package:doc_app/screens/doctor_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
-//fs
+import 'package:doc_app/screens/sos_page.dart';
+import 'package:doc_app/screens/doctor_page.dart';
+
 class Body extends StatelessWidget {
   final PersistentTabController _controller =
       PersistentTabController(initialIndex: 0);
 
   List<Widget> _buildScreens() {
     return [
-      Container(),
-      DoctorPage()
+      SOSPage(),
+      DoctorPage(),
+      Container(child: Icon(Icons.emoji_emotions)),
     ];
   }
 
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.home),
-        title: ("Home"),
-        activeColor: CupertinoColors.activeBlue,
+        icon: Icon(FontAwesomeIcons.heartbeat),
+        title: ("SOS"),
+        activeColor: CupertinoColors.destructiveRed,
         inactiveColor: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(CupertinoIcons.settings),
-        title: ("Settings"),
+        icon: Icon(Icons.medical_services),
+        title: ("Home Visit"),
+        activeColor: CupertinoColors.activeGreen,
+        inactiveColor: CupertinoColors.systemGrey,
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(FontAwesomeIcons.question),
+        title: ("Forum"),
         activeColor: CupertinoColors.activeBlue,
         inactiveColor: CupertinoColors.systemGrey,
       ),

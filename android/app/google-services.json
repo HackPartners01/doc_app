@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "33971233530",
+    "firebase_url": "https://hackshetra2020-85555.firebaseio.com",
+    "project_id": "hackshetra2020-85555",
+    "storage_bucket": "hackshetra2020-85555.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33971233530:android:65d7677d753612e3d15f43",
+        "android_client_info": {
+          "package_name": "com.example.doc_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33971233530-4tuabo5icj2e685dtj3e2qa0d9oa0b4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeE32yee3md2bfpk3UF5joLdVPA6hHufA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33971233530-4tuabo5icj2e685dtj3e2qa0d9oa0b4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,7 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:doc_app/constants.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SideNavDrawer extends StatelessWidget {
   @override
@@ -30,7 +30,7 @@ class SideNavDrawer extends StatelessWidget {
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
-            leading: Icon(Icons.add_alert),
+            leading: Icon(FontAwesomeIcons.heartbeat),
             title: Text('SOS'),
             onTap: () => {Navigator.of(context).pop()},
           ),
