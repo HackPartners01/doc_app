@@ -18,9 +18,9 @@ class MapLiveLocationState extends State<MapLiveLocation> {
   LatLng docLocation = LatLng(29.291125, 76.338386);
   GoogleMapController _controller;
   final Set<Polyline> polyLine = {};
-  List<LatLng> routeCoords;
+  List<LatLng> routeCoords = [];
   GoogleMapPolyline googleMapPolyline =
-      new GoogleMapPolyline(apiKey: 'AIzaSyA-wTfmpUdurLBGrJBjOgrAgm1N5cpUcXI');
+      new GoogleMapPolyline(apiKey: 'AIzaSyChQl1UFDjDPO3jdUtvV_eFVZbJKFOtV8s');
 
   initState() {
     super.initState();
