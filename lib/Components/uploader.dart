@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:doc_app/Data%20Modlels/doctor.dart';
+import 'package:doc_app/screens/doctor_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -39,13 +40,15 @@ class UploaderState extends State<Uploader> {
     Reference ref = _storage.ref().child(filePath);
     task = ref.putFile(widget.file);
     task.whenComplete(() async => {
-      downloadUrl = await ref.getDownloadURL().then((value) => downloadUrl = value),
-      d.networkImageAddress = downloadUrl,
-      d.save(),
-      Scaffold.of(context).showSnackBar(
-        SnackBar(content: Text('file uploaded succesfully'))),
-      //TODO go somewhere
-    });
+    downloadUrl = await ref.getDownloadURL().then((value) => downloadUrl = value),
+    d.networkImageAddress = downloadUrl,
+    d.save(),
+    Scaffold.of(context).showSnackBar(
+    SnackBar(content: Text('Details Saved Successfully'))),
+    Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => DoctorPage(d:d))),
+  });
 
   }
 
