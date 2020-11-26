@@ -14,8 +14,9 @@ class MapLiveLocation extends StatefulWidget {
 }
 
 class MapLiveLocationState extends State<MapLiveLocation> {
-  double _latitude = 24.4745017;
-  double _longitude = 82.987785;
+  LatLng latLng = LatLng(24.4745017, 82.987785);
+  double zoom = 15;
+  MapController _mapController = MapController();
   initState() {
     super.initState();
     // print(location.latitude);
@@ -28,14 +29,20 @@ class MapLiveLocationState extends State<MapLiveLocation> {
     print(location.latitude);
 
     return FlutterMap(
+      mapController: _mapController,
       options: MapOptions(
-          center: LatLng(_latitude, _longitude),
+          center: latLng,
           minZoom: 10.0,
-          zoom: 15.0,
+          zoom: zoom,
           onTap: (LatLng l) {
             setState(() {
-              _latitude = location.latitude;
-              _longitude = location.longitude;
+              print('tapped');
+              latLng.latitude = location.latitude;
+              latLng.longitude = location.longitude;
+              _mapController.move(latLng, zoom);
+              // _latitude = location.latitude;
+              // _longitude = location.longitude;
+              // build(context);
             });
           }),
       layers: [
