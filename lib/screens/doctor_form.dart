@@ -242,8 +242,10 @@ class DoctorFormElementsState extends State<DoctorFormElements> {
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: ElevatedButton(
-                child: Text('Submit Certificate Image for Verification'),
+              child: FlatButton(
+                color: kColorOrange,
+                textColor: kColorWhite,
+                child: Text('Submit'),
                 onPressed: () {
                   final form = _formKey.currentState;
                   if (form.validate()) {
