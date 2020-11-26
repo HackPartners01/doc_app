@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:doc_app/constants.dart';
 import 'package:doc_app/components/text_card.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class SOSPage extends StatelessWidget {
   @override
@@ -69,13 +70,26 @@ class SOSPage extends StatelessWidget {
                     child: Material(
                       color: Colors.transparent,
                       child: InkWell(
-                        child: Text(
-                          'Request Assistance',
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 34.0),
+                        child: FlatButton(
+                          onPressed: () {  },  // TODO : Add function to request assistance
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Icon(FontAwesomeIcons.heartbeat),
+                              ),
+                              Text(
+                                'Request Assistance',
+                                textAlign: TextAlign.center,
+                                style: TextStyle(fontSize: 25.0),
+                              ),
+                            ],
+                          ),
                         ),
-                        onTap:
-                            () {}, // TODO : Add function to request assistance
+                        
+
                       ),
                     ),
                   ),
