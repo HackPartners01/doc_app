@@ -24,17 +24,17 @@ class Location {
       intervalDuration: thirtySeconds,
       desiredAccuracy: LocationAccuracy.bestForNavigation,
     ).listen((Position position) {
-      print(position == null
-          ? 'Unknown'
-          : position.latitude.toString() +
-              ', ' +
-              position.longitude.toString());
-      // if(position == null)
-      //   print('Position Null');
-      // else {
-      //   this.latitude = position.latitude;
-      //   this.longitude = position.longitude;
-      // }
+      // print(position == null
+      //     ? 'Unknown'
+      //     : position.latitude.toString() +
+      //         ', ' +
+      //         position.longitude.toString());
+      if (position == null)
+        print('Position Null');
+      else {
+        this.latitude = position.latitude;
+        this.longitude = position.longitude;
+      }
     });
   }
 }
