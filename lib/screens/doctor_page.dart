@@ -2,19 +2,18 @@ import 'package:doc_app/Components/map_live_location.dart';
 import 'package:doc_app/Data%20Modlels/doctor.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:location/location.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:location/location.dart';
 
 import 'package:doc_app/components/text_card.dart';
 import 'package:doc_app/constants.dart';
 
 const double CAMERA_TILT = 80;
 const double CAMERA_BEARING = 30;
-const LatLng SOURCE_LOCATION = LatLng(42.747932, -71.167889);
-const LatLng DEST_LOCATION = LatLng(37.335685, -122.0605916);
+// const LatLng SOURCE_LOCATION = LatLng(42.747932, -71.167889);
+// const LatLng DEST_LOCATION = LatLng(37.335685, -122.0605916);
 
 class DoctorPage extends StatelessWidget {
-
   Doctor d;
   DoctorPage({this.d});
 
@@ -43,7 +42,9 @@ class DoctorPage extends StatelessWidget {
                           child: Container(
                             alignment: Alignment.topLeft,
                             child: CircleAvatar(
-                              backgroundImage: d==null?AssetImage(avatarImageLocation):NetworkImage(d.networkImageAddress),
+                              backgroundImage: d == null
+                                  ? AssetImage(avatarImageLocation)
+                                  : NetworkImage(d.networkImageAddress),
                               radius: 50.0,
                             ),
                           ),
@@ -56,15 +57,17 @@ class DoctorPage extends StatelessWidget {
                             children: [
                               Padding(
                                 padding: const EdgeInsets.all(4.0),
-                                child: Text(d!=null?'Dr.${d.name}':'Dr.Abhinamyu Roy'),
+                                child: Text(d != null
+                                    ? 'Dr.${d.name}'
+                                    : 'Dr.Abhinamyu Roy'),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(4.0),
-                                child: Text(d!=null?'${d.degree}':'MBBS'),
+                                child: Text(d != null ? '${d.degree}' : 'MBBS'),
                               ),
                               Padding(
                                 padding: const EdgeInsets.all(4.0),
-                                child: Text(d==null?'$docPhoneNum': d.phn),
+                                child: Text(d == null ? '$docPhoneNum' : d.phn),
                               )
                             ],
                           ),
@@ -85,7 +88,7 @@ class DoctorPage extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 16.0),
+          padding: const EdgeInsets.only(left: 16.0, right: 16.0, bottom: 0.0),
           child: Card(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -116,9 +119,7 @@ class DoctorPage extends StatelessWidget {
               decoration: BoxDecoration(
                   color: kColorLightGrey,
                   borderRadius: BorderRadius.all(Radius.circular(10))),
-              child: Center(
-                child: MapLiveLocation()
-              ),
+              child: Center(child: MapLiveLocation()),
             ),
           ),
         )

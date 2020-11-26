@@ -1,8 +1,10 @@
+import 'dart:async';
+
 import 'package:geolocator/geolocator.dart';
 
 class Location {
-  double latitude;
-  double longitude;
+  double latitude = 24.4620486;
+  double longitude = 28.9940003;
 
   Future<void> getCurrentLocation() async {
     try {
@@ -14,6 +16,26 @@ class Location {
     } catch (e) {
       print(e);
     }
+  }
+
+  void keepGettingCurrentLocation() async {
+    Duration thirtySeconds = Duration(seconds: 30);
+    Geolocator.getPositionStream(
+      intervalDuration: thirtySeconds,
+      desiredAccuracy: LocationAccuracy.bestForNavigation,
+    ).listen((Position position) {
+      print(position == null
+          ? 'Unknown'
+          : position.latitude.toString() +
+              ', ' +
+              position.longitude.toString());
+      // if(position == null)
+      //   print('Position Null');
+      // else {
+      //   this.latitude = position.latitude;
+      //   this.longitude = position.longitude;
+      // }
+    });
   }
 }
 

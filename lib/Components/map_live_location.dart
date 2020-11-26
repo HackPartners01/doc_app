@@ -1,10 +1,10 @@
-import 'dart:async';
-
-import 'package:doc_app/Constants.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_map_polyline/google_map_polyline.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:latlong/latlong.dart';
+import 'package:flutter_map/flutter_map.dart';
+
+import 'package:doc_app/services/location.dart';
+// import 'package:google_map_polyline/google_map_polyline.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class MapLiveLocation extends StatefulWidget {
   @override
@@ -14,41 +14,41 @@ class MapLiveLocation extends StatefulWidget {
 }
 
 class MapLiveLocationState extends State<MapLiveLocation> {
-  LatLng ourLocation = LatLng(29.318692, 76.307506);
-  LatLng docLocation = LatLng(29.291125, 76.338386);
-  GoogleMapController _controller;
-  final Set<Polyline> polyLine = {};
-  List<LatLng> routeCoords = [];
-  GoogleMapPolyline googleMapPolyline =
-      new GoogleMapPolyline(apiKey: 'AIzaSyChQl1UFDjDPO3jdUtvV_eFVZbJKFOtV8s');
-
+  double _latitude = 24.4745017;
+  double _longitude = 82.987785;
   initState() {
     super.initState();
-    getSomePoints();
-  }
-
-  getSomePoints() async {
-    routeCoords = await googleMapPolyline.getCoordinatesWithLocation(
-        origin: docLocation, destination: ourLocation, mode: RouteMode.driving);
-
-    print('$routeCoords and helooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo');
+    // print(location.latitude);
+    // _latitude = location.latitude;
+    // _longitude = location.longitude;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GoogleMap(
-        onMapCreated: onMapCreated,
-        polylines: polyLine,
-        initialCameraPosition: CameraPosition(target: ourLocation, zoom: 14),
-      ),
-    );
-  }
+    print(location.latitude);
 
-  onMapCreated(GoogleMapController googleMapController) {
-    setState(() {
-      _controller = googleMapController;
-      polyLine.add(Polyline(polylineId: PolylineId('route1'), visible: true,width: 4, color: kColorOrange, points: routeCoords, startCap: Cap.roundCap, endCap: Cap.buttCap));
-    });
+    return FlutterMap(
+      options: MapOptions(
+          center: LatLng(_latitude, _longitude),
+          minZoom: 10.0,
+          zoom: 15.0,
+          onTap: (LatLng l) {
+            setState(() {
+              _latitude = location.latitude;
+              _longitude = location.longitude;
+            });
+          }),
+      layers: [
+        TileLayerOptions(
+          urlTemplate:
+              "https://api.mapbox.com/styles/v1/pseudocoders/ckhybp7rf0jg119mjjnm57ach/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoicHNldWRvY29kZXJzIiwiYSI6ImNraHhxeXlkMTAwOHEycm8xOTQ5OWd6OGEifQ.qV8G8wpyAy5bShPvnw84qg",
+          additionalOptions: {
+            'accessToken':
+                'sk.eyJ1IjoicHNldWRvY29kZXJzIiwiYSI6ImNraHk5eGMyZTA4ZW4ycm9hdXZjZ3FsYXkifQ.Meu9o15bvwY0Ht9BG7_T2w',
+            'id': 'mapbox.mapbox-streets-v8'
+          },
+        ),
+      ],
+    );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'screens/home_page.dart';
 import 'constants.dart';
 import 'package:doc_app/scratch.dart';
+import 'services/location.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     run();
+    location.keepGettingCurrentLocation();
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
