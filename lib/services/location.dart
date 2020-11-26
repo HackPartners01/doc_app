@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:geolocator/geolocator.dart';
 
 class Location {
-  double latitude = 24.4745017;
-  double longitude = 82.987785;
+  double latitude;
+  double longitude;
 
   Future<void> getCurrentLocation() async {
     try {
