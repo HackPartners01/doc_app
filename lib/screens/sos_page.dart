@@ -26,7 +26,7 @@ class SOSPage extends StatelessWidget {
                         Text('$numDoctorsNearby',
                             style: TextStyle(
                                 fontSize: 90.0, fontWeight: FontWeight.bold)),
-                        Text('Doctors Found Nearby'),
+                        Text('Doctors Found Nearby', textAlign: TextAlign.center,),
                       ],
                     ),
                   ),
@@ -40,7 +40,7 @@ class SOSPage extends StatelessWidget {
                         Text('2',
                             style: TextStyle(
                                 fontSize: 90.0, fontWeight: FontWeight.bold)),
-                        Text('Hospitals Found Nearby'),
+                        Text('Hospitals Found Nearby', style: TextStyle(), textAlign: TextAlign.center,),
                       ],
                     ),
                   ),
@@ -58,7 +58,7 @@ class SOSPage extends StatelessWidget {
                 children: [
                   CategoryDropdown(),
                   Container(
-                    height: 100.0,
+                    height: 110.0,
                     alignment: Alignment.center,
                     padding:
                         EdgeInsets.symmetric(vertical: 5.0, horizontal: 10.0),
@@ -72,7 +72,7 @@ class SOSPage extends StatelessWidget {
                         child: Text(
                           'Request Assistance',
                           textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 38.0),
+                          style: TextStyle(fontSize: 34.0),
                         ),
                         onTap:
                             () {}, // TODO : Add function to request assistance
