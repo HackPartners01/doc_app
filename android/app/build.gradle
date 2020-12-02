@@ -48,6 +48,9 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    dependencies{
+        implementation 'com.google.firebase:firebase-messaging:21.0.0'
+    }
 }
 
 flutter {
