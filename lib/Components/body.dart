@@ -35,8 +35,8 @@ class Body extends StatelessWidget {
         inactiveColor: CupertinoColors.systemGrey,
       ),
       PersistentBottomNavBarItem(
-        icon: Icon(FontAwesomeIcons.question),
-        title: ("Forum"),
+        icon: Icon(FontAwesomeIcons.hospitalUser, size: 20,),
+        title: ("Me"),
         activeColor: CupertinoColors.activeBlue,
         inactiveColor: CupertinoColors.systemGrey,
       ),
