@@ -1,3 +1,4 @@
+import 'package:doc_app/screens/me_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,7 +17,7 @@ class Body extends StatelessWidget {
     return [
       SOSPage(),
       DoctorPage(),
-      DoctorForm(),
+      MePage(),
     ];
   }
 

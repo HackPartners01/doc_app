@@ -84,6 +84,7 @@ class DoctorPage extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
+                          timeToReach==10?'':
                           'Available in $timeToReach minutes',
                           style: TextStyle(fontSize: 20),
                         ),
