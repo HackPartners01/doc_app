@@ -33,15 +33,15 @@ class DoctorFormElementsState extends State<DoctorFormElements> {
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
-    return Form(
-      key: _formKey,
+    return Material(
       child: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Container(
-              margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 5.0),
-              child: Expanded(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 5.0),
                 child: TextFormField(
                     autocorrect: true,
                     decoration: InputDecoration(
@@ -55,10 +55,8 @@ class DoctorFormElementsState extends State<DoctorFormElements> {
                     },
                     onSaved: (val) => {d.name = val.toUpperCase()}),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-              child: Expanded(
+              Container(
+                margin: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                 child: TextFormField(
                     autocorrect: true,
                     keyboardType: TextInputType.phone,
@@ -74,10 +72,8 @@ class DoctorFormElementsState extends State<DoctorFormElements> {
                     },
                     onSaved: (val) => d.phn = val),
               ),
-            ),
-            Container(
-              margin: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
-              child: Expanded(
+              Container(
+                margin: EdgeInsets.fromLTRB(10.0, 5.0, 10.0, 5.0),
                 child: TextFormField(
                     autocorrect: true,
                     decoration: InputDecoration(
@@ -93,34 +89,34 @@ class DoctorFormElementsState extends State<DoctorFormElements> {
                     onSaved: (val) => d.degree = val.toUpperCase() //TODO
                     ),
               ),
-            ),
-            CategoryChips(),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: FlatButton(
-                color: kColorOrange,
-                textColor: kColorWhite,
-                child: Text('Submit'),
-                onPressed: () {
-                  final form = _formKey.currentState;
-                  if (form.validate()) {
-                    form.save();
-                    d.ch1 = check[0];
-                    d.ch2 = check[1];
-                    d.ch3 = check[2];
-                    d.ch4 = check[3];
-                    d.ch5 = check[4];
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ImageTaking(d),
-                      ),
-                    );
-                  }
-                },
+              CategoryChips(),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: FlatButton(
+                  color: kColorOrange,
+                  textColor: kColorWhite,
+                  child: Text('Submit'),
+                  onPressed: () {
+                    final form = _formKey.currentState;
+                    if (form.validate()) {
+                      form.save();
+                      d.ch1 = check[0];
+                      d.ch2 = check[1];
+                      d.ch3 = check[2];
+                      d.ch4 = check[3];
+                      d.ch5 = check[4];
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ImageTaking(d),
+                        ),
+                      );
+                    }
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

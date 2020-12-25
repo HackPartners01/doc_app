@@ -1,3 +1,4 @@
+import 'package:doc_app/screens/home_visit.dart';
 import 'package:doc_app/screens/me_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class Body extends StatelessWidget {
   List<Widget> _buildScreens() {
     return [
       SOSPage(),
-      DoctorPage(),
+      HomeVisit(),
       MePage(),
     ];
   }
