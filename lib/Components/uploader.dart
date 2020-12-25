@@ -1,17 +1,12 @@
 import 'dart:io';
 
-import 'package:doc_app/Constants.dart';
 import 'package:doc_app/Data%20Modlels/doctor.dart';
-import 'package:doc_app/screens/doctor_page.dart';
 import 'package:doc_app/screens/me_page.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 
 
 class Uploader extends StatefulWidget {
@@ -49,26 +44,19 @@ class UploaderState extends State<Uploader> {
               await ref.getDownloadURL().then((value) => downloadUrl = value),
           d.networkImageAddress = downloadUrl,
           d.save(),
-          insertDocToDB(d),
           Scaffold.of(this.context).showSnackBar(
               SnackBar(content: Text('Details Saved Successfully'))),
+          _saveDoc(),
           Navigator.push(
               this.context, MaterialPageRoute(builder: (context) => MePage(d: d))),
         });
   }
 
-
-  Future<void> insertDocToDB(Doctor doc) async {
-    // Get a reference to the database.
-    final Database database = await dbConst;
-
-    await database.insert(
-      'docTable',
-      doc.toMap(),
-      conflictAlgorithm: ConflictAlgorithm.replace,
-    );
-
-    print("${doc.toMap()}vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv");
+  _saveDoc() async {
+    final prefs = await SharedPreferences.getInstance();
+    final key = 'doc_id';
+    final value = int.parse(d.id);
+    prefs.setInt(key, value);
   }
 
   @override

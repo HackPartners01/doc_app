@@ -8,5 +8,4 @@ const Color kColorLightGrey = Color(0xffeeeeee);
 const Color kColorDarkGrey = Color(0xff686d76);
 const Color kColorDarkestGrey = Color(0xff373a40);
 
-Future<Database> dbConst;
 Doctor me;

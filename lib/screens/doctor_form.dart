@@ -1,8 +1,11 @@
 import 'package:doc_app/Constants.dart';
 import 'package:doc_app/Data%20Modlels/doctor.dart';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'imageTaking.dart';
+import 'me_page.dart';
 
 class DoctorForm extends StatelessWidget {
   @override
