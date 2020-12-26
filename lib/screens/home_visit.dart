@@ -23,7 +23,7 @@ class HomeVisitState extends State<HomeVisit> {
       padding: const EdgeInsets.only(top:8.0, bottom: 16.0),
       child: ListView(
         children: [
-          for(int i=0;i<listOfDoctors.length;i++) DocListItem(listOfDoctors[i])
+          for(int i=0;i<listOfDoctors.length;i++)if(listOfDoctors[i]!=me) DocListItem(listOfDoctors[i])
         ],
       ),
     );

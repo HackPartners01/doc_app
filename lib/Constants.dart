@@ -31,6 +31,7 @@ updateListOfDoctors() async{
           ch3: values['ch3'],
           ch4: values['ch4'],
           ch5: values['ch5'],
+          available: values['available']
         );
       if(!listOfDoctors.contains(d)) listOfDoctors.add(d);
     }

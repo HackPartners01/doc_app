@@ -7,6 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../Constants.dart';
+
 
 
 class Uploader extends StatefulWidget {
@@ -43,7 +45,10 @@ class UploaderState extends State<Uploader> {
           downloadUrl =
               await ref.getDownloadURL().then((value) => downloadUrl = value),
           d.networkImageAddress = downloadUrl,
+          d.available = true,
+          me = d,
           d.save(),
+
           Scaffold.of(this.context).showSnackBar(
               SnackBar(content: Text('Details Saved Successfully'))),
           _saveDoc(),

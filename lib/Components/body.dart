@@ -6,13 +6,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 import 'package:doc_app/screens/sos_page.dart';
-import 'package:doc_app/screens/doctor_page.dart';
-import 'package:doc_app/screens/doctor_form.dart';
 import 'package:doc_app/constants.dart';
 
 class Body extends StatelessWidget {
-  final PersistentTabController _controller =
+  final PersistentTabController controller =
       PersistentTabController(initialIndex: 0);
+
 
   List<Widget> _buildScreens() {
     return [
@@ -48,7 +47,7 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PersistentTabView(
-      controller: _controller,
+      controller: controller,
       screens: _buildScreens(),
       items: _navBarsItems(),
 

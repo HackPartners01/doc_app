@@ -24,7 +24,6 @@ class DocListItem extends StatefulWidget {
 class DocListItemState extends State<DocListItem> {
   Doctor d;
   String avatarImageLocation = 'assets/images/avatar.png';
-  int timeToReach = 10;
   String docPhoneNum = "98xxxxxxxx";
 
   DocListItemState(Doctor d) {
@@ -95,7 +94,7 @@ class DocListItemState extends State<DocListItem> {
                         Padding(
                           padding: const EdgeInsets.all(16.0),
                           child: Text(
-                            'Available in $timeToReach minutes',
+                            d.available==true?'Available': 'Not Available',
                             style: TextStyle(fontSize: 20),
                           ),
                         ),
